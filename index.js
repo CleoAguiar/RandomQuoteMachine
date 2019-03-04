@@ -19,7 +19,10 @@ function displayQuote(quote) {
 	const quoteText = document.querySelector('#text');
 	quoteText.textContent = quote;
 
-	const tweetButton = document.querySelector("#tweet-quote");
+	const authorText = document.querySelector('#author');
+	authorText.textContent =  'Donald Trump';
+
+	const tweetButton = document.querySelector('#tweet-quote');
 	tweetButton.setAttribute('href', `https://twitter.com/intent/tweet?text=${quote}`);
 }
 
