@@ -1,32 +1,45 @@
-const endpoint = 'https://api.whatdoestrumpthink.com/api/v1/quotes/random';
-// const endpoint = 'http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?';
+// const endpoint = 'https://api.whatdoestrumpthink.com/api/v1/quotes/random';
+const endpoint = 'http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?';
 
-function getQuote() {
-	fetch(endpoint)
-	.then(function(response){
-		return response.json();
-	})
-	.then(function(data){
-		displayQuote(data.message);
-		// console.log(data);
-	})
-	.catch(function(){
-		console.log("Error");
+
+$(document).ready(function(){
+	$("#new-quote").on("click", function(){
+		$.getJSON(endpoint, function(json){
+			var quote = json.quoteText;
+			var author = json.quoteAuthor;
+			$("#text").text(quote);
+			$("#author").text(author);
+		});
 	});
-}
+});
 
-function displayQuote(quote) {
-	const quoteText = document.querySelector('#text');
-	quoteText.textContent = quote;
 
-	const authorText = document.querySelector('#author');
-	authorText.textContent =  'Donald Trump';
+// function getQuote() {
+// 	fetch(endpoint)
+// 	.then(function(response){
+// 		return response.json();
+// 	})
+// 	.then(function(data){
+// 		displayQuote(data.message);
+// 		// console.log(data);
+// 	})
+// 	.catch(function(){
+// 		console.log("Error");
+// 	});
+// }
 
-	const tweetButton = document.querySelector('#tweet-quote');
-	tweetButton.setAttribute('href', `https://twitter.com/intent/tweet?text=${quote}`);
-}
+// function displayQuote(quote) {
+// 	const quoteText = document.querySelector('#text');
+// 	quoteText.textContent = quote;
 
-const newQuoteButton  = document.querySelector('#new-quote');
-newQuoteButton.addEventListener('click', getQuote);
+// 	const authorText = document.querySelector('#author');
+// 	authorText.textContent =  'Donald Trump';
 
-getQuote();
+// 	const tweetButton = document.querySelector('#tweet-quote');
+// 	tweetButton.setAttribute('href', `https://twitter.com/intent/tweet?text=${quote}`);
+// }
+
+// const newQuoteButton  = document.querySelector('#new-quote');
+// newQuoteButton.addEventListener('click', getQuote);
+
+// getQuote();
