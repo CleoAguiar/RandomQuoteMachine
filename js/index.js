@@ -1,15 +1,19 @@
 // const endpoint = 'https://api.whatdoestrumpthink.com/api/v1/quotes/random';
 const endpoint = 'http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?';
 
-
-$(document).ready(function(){
-	$("#new-quote").on("click", function(){
-		$.getJSON(endpoint, function(json){
-			var quote = json.quoteText;
-			var author = json.quoteAuthor;
+function getQuote(){
+	$.getJSON(endpoint, function(json){
+			const quote = json.quoteText;
+			const author = json.quoteAuthor;
 			$("#text").text(quote);
 			$("#author").text(author);
 		});
+}
+
+$(document).ready(function(){
+	getQuote();
+	$("#new-quote").on("click", function(){
+		getQuote();
 	});
 });
 
