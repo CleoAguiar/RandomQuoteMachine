@@ -1,7 +1,20 @@
+.card, .btn, .form-control { border-radius: 0; }
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-dark .nav-link {
+  color: silver;
+}
+
+.btn-primary { background-color: blue; }
+
 html {
   margin: 40px auto;
   text-align: center;
 }
+
 .btn-twitter {
 	  background: #00ACEE;
 	  border-radius: 0;
