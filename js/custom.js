@@ -8,7 +8,9 @@ const endpoint = 'http://api.forismatic.com/api/1.0/?method=getQuote&format=json
 	}
 
 	$(document).ready(function(){
-		displayQuote('json.quoteText', 'json.quoteAuthor');
+		$.getJSON(endpoint, function(json){
+			displayQuote(json.quoteText, json.quoteAuthor);
+		});
 
 		$('#new-quote').click(function(){
 			displayQuote('quoteText');
