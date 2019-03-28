@@ -3,8 +3,11 @@ const endpoint = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jso
 (function($){
 	function displayQuote(){
 		$.getJSON(endpoint, function(json){
-			$('#text').text(json.quoteText);
-			$('#author').text(json.quoteAuthor.length == 0 ? 'Unknown' : json.quoteAuthor);
+			var quote = json.quoteText;
+			var author = json.quoteAuthor.length == 0 ? 'Unknown' : json.quoteAuthor;
+			
+			$('#text').text(quote);
+			$('#author').text(author);
 			$('#tweet-quote').attr('href', `https://twitter.com/intent/tweet?text=${quote} - by ${author}`);
 		});
 	}
